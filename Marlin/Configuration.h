@@ -68,7 +68,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_BTT_MANTA_M8P_V1_1
+  #define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V3_1
 #endif
 
 /**
@@ -155,8 +155,8 @@
 //#define W_DRIVER_TYPE  A4988
 #define E0_DRIVER_TYPE TMC2209
 #define E1_DRIVER_TYPE TMC2209
-#define E2_DRIVER_TYPE TMC2209
-#define E3_DRIVER_TYPE TMC2209
+// #define E2_DRIVER_TYPE TMC2209
+// #define E3_DRIVER_TYPE TMC2209
 //#define E4_DRIVER_TYPE A4988
 //#define E5_DRIVER_TYPE A4988
 //#define E6_DRIVER_TYPE A4988
@@ -208,7 +208,7 @@
 
 // This defines the number of extruders
 // :[0, 1, 2, 3, 4, 5, 6, 7, 8]
-#define EXTRUDERS 4
+#define EXTRUDERS 2
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
@@ -702,16 +702,16 @@
   //#define MPC_AUTOTUNE_MENU                         // Add MPC auto-tuning to the "Advanced Settings" menu. (~350 bytes of flash)
 
   #define MPC_MAX 255                                 // (0..255) Current to nozzle while MPC is active.
-  #define MPC_HEATER_POWER { 50.0f, 50.0f, 50.0f, 50.0f }                  // (W) Heat cartridge powers.
+  #define MPC_HEATER_POWER { 50.0f, 50.0f}                  // (W) Heat cartridge powers.
 
   #define MPC_INCLUDE_FAN                             // Model the fan speed?
 
   // Measured physical constants from M306
-  #define MPC_BLOCK_HEAT_CAPACITY { 15.98f, 17.31f, 14.43f, 16.52f }           // (J/K) Heat block heat capacities.
-  #define MPC_SENSOR_RESPONSIVENESS { 0.2591f, 0.1171f, 0.3469f, 0.2168f }         // (K/s per ∆K) Rate of change of sensor temperature from heat block.
-  #define MPC_AMBIENT_XFER_COEFF { 0.0930f, 0.1012f, 0.1056f, 0.1181f }           // (W/K) Heat transfer coefficients from heat block to room air with fan off.
+  #define MPC_BLOCK_HEAT_CAPACITY { 15.98f, 17.31f}           // (J/K) Heat block heat capacities.
+  #define MPC_SENSOR_RESPONSIVENESS { 0.2591f, 0.1171f }         // (K/s per ∆K) Rate of change of sensor temperature from heat block.
+  #define MPC_AMBIENT_XFER_COEFF { 0.0930f, 0.1012f}           // (W/K) Heat transfer coefficients from heat block to room air with fan off.
   #if ENABLED(MPC_INCLUDE_FAN)
-    #define MPC_AMBIENT_XFER_COEFF_FAN255 { 0.1569f, 0.1527f, 0.2083f, 0.1653f }  // (W/K) Heat transfer coefficients from heat block to room air with fan on full.
+    #define MPC_AMBIENT_XFER_COEFF_FAN255 { 0.1569f, 0.1527f }  // (W/K) Heat transfer coefficients from heat block to room air with fan on full.
   #endif
 
   // For one fan and multiple hotends MPC needs to know how to apply the fan cooling effect.
@@ -722,7 +722,7 @@
 
   // Filament Heat Capacity (joules/kelvin/mm)
   // Set at runtime with M306 H<value>
-  #define FILAMENT_HEAT_CAPACITY_PERMM { 5.15e-3f, 5.15e-3f, 5.15e-3f, 5.15e-3f }    // 0.0056 J/K/mm for 1.75mm PLA (0.0149 J/K/mm for 2.85mm PLA).
+  #define FILAMENT_HEAT_CAPACITY_PERMM { 5.15e-3f, 5.15e-3f}    // 0.0056 J/K/mm for 1.75mm PLA (0.0149 J/K/mm for 2.85mm PLA).
                                                       // 0.0036 J/K/mm for 1.75mm PETG (0.0094 J/K/mm for 2.85mm PETG).
                                                       // 0.00515 J/K/mm for 1.75mm ABS (0.0137 J/K/mm for 2.85mm ABS).
                                                       // 0.00522 J/K/mm for 1.75mm Nylon (0.0138 J/K/mm for 2.85mm Nylon).
@@ -886,7 +886,7 @@
 
 // Enable one of the options below for CoreXY, CoreXZ, or CoreYZ kinematics,
 // either in the usual order or reversed
-#define COREXY
+// #define COREXY
 //#define COREXZ
 //#define COREYZ
 //#define COREYX
@@ -1234,7 +1234,7 @@
  * Override with M92 (when enabled below)
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { (200*64)/(2.0*20),(200*64)/(2.0*20), 398, /*93.6*/ 423.91, /*93.6*/ 423.91, /*93.3 */ 423.91, 423.91 /*93.6*/ } 
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { (200*64)/(2.0*20),(200*64)/(2.0*20), 398, /*93.6*/ 423.91, /*93.6*/ 423.91 } 
 // ^^ SME both
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { (200*64)/(2.0*20),(200*64)/(2.0*20), 398, 94.6, 93.6, 93.3, 93.6 } // SME2
 

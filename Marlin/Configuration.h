@@ -3249,7 +3249,7 @@
 // Usually paired with MKS Robin Nano V2 & V3
 // https://github.com/makerbase-mks/MKS-TFT-Hardware/tree/master/MKS%20TS35
 //
-// #define MKS_TS35_V2_0
+#define MKS_TS35_V2_0
 
 //
 // 320x240, 2.4", FSMC Display From MKS
@@ -3353,8 +3353,8 @@
  *   root of your SD card, together with the compiled firmware.
  */
 //#define TFT_CLASSIC_UI
-//#define TFT_COLOR_UI
-// #define TFT_LVGL_UI
+// #define TFT_COLOR_UI
+#define TFT_LVGL_UI
 
 #if ENABLED(TFT_COLOR_UI)
   /**

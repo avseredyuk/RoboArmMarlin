@@ -1234,7 +1234,7 @@
  * Override with M92 (when enabled below)
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { (200*64)/(2.0*20),(200*64)/(2.0*20), 398, /*93.6*/ 423.91, /*93.6*/ 423.91 } 
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { (200*64)/(2.0*20),(200*64)/(2.0*20), 200, 100, 100 } 
 // ^^ SME both
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { (200*64)/(2.0*20),(200*64)/(2.0*20), 398, 94.6, 93.6, 93.3, 93.6 } // SME2
 
@@ -1261,7 +1261,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 50, 10000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)

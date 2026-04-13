@@ -68,7 +68,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V3_1
+  #define MOTHERBOARD BOARD_BTT_MANTA_M8P_V2_0
 #endif
 
 /**
@@ -155,9 +155,9 @@
 //#define W_DRIVER_TYPE  A4988
 #define E0_DRIVER_TYPE TMC2209
 #define E1_DRIVER_TYPE TMC2209
-// #define E2_DRIVER_TYPE TMC2209
-// #define E3_DRIVER_TYPE TMC2209
-//#define E4_DRIVER_TYPE A4988
+#define E2_DRIVER_TYPE TMC2209
+#define E3_DRIVER_TYPE TMC2209
+// #define E4_DRIVER_TYPE TMC2209
 //#define E5_DRIVER_TYPE A4988
 //#define E6_DRIVER_TYPE A4988
 //#define E7_DRIVER_TYPE A4988
@@ -208,7 +208,7 @@
 
 // This defines the number of extruders
 // :[0, 1, 2, 3, 4, 5, 6, 7, 8]
-#define EXTRUDERS 2
+#define EXTRUDERS 4
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
@@ -662,15 +662,15 @@
  * PIDTEMP : PID temperature control (~4.1K)
  * MPCTEMP : Predictive Model temperature control. (~1.8K without auto-tune)
  */
-// #define PIDTEMP           // See the PID Tuning Guide at https://reprap.org/wiki/PID_Tuning
-#define MPCTEMP         // ** EXPERIMENTAL ** See https://marlinfw.org/docs/features/model_predictive_control.html
+#define PIDTEMP           // See the PID Tuning Guide at https://reprap.org/wiki/PID_Tuning
+// #define MPCTEMP         // ** EXPERIMENTAL ** See https://marlinfw.org/docs/features/model_predictive_control.html
 
 #define PID_MAX  255      // Limit hotend current while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #define PID_K1     0.95   // Smoothing factor within any PID loop
 
 #if ENABLED(PIDTEMP)
   #define PID_DEBUG             // Print PID debug data to the serial port. Use 'M303 D' to toggle activation.
-  #define PID_PARAMS_PER_HOTEND // Use separate PID parameters for each extruder (useful for mismatched extruders)
+  //#define PID_PARAMS_PER_HOTEND // Use separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with G-code: M301 E[extruder number, 0-2]
 
   #if ENABLED(PID_PARAMS_PER_HOTEND)
@@ -1234,8 +1234,9 @@
  * Override with M92 (when enabled below)
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { (200*64)/(2.0*20),(200*64)/(2.0*20), 200, 100, 100 } 
-// ^^ SME both
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 200, 200, 200, 100, 100, 100, 100 } 
+
+ // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 320, 320, 200, 100, 100, 100, 100 } 
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { (200*64)/(2.0*20),(200*64)/(2.0*20), 398, 94.6, 93.6, 93.3, 93.6 } // SME2
 
 /**
@@ -1248,7 +1249,7 @@
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 3, 5, 5 }
+#define DEFAULT_MAX_FEEDRATE          { 7, 7, 3, 5, 10, 5, 5 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1261,7 +1262,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 50, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 50, 10000, 10000, 10000, 10000}
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1749,24 +1750,25 @@
 // @section motion
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR true
-#define INVERT_Y_DIR true
+#define INVERT_X_DIR false
+#define INVERT_Y_DIR false
+// X & Y on same axis, one inverted 
 #define INVERT_Z_DIR false
-//#define INVERT_I_DIR false
-//#define INVERT_J_DIR false
-//#define INVERT_K_DIR false
-//#define INVERT_U_DIR false
+#define INVERT_I_DIR false
+#define INVERT_J_DIR true
+#define INVERT_K_DIR true
+#define INVERT_U_DIR false
 //#define INVERT_V_DIR false
 //#define INVERT_W_DIR false
 
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
-#define INVERT_E2_DIR false
+#define INVERT_E2_DIR true
 #define INVERT_E3_DIR true
-#define INVERT_E4_DIR false
+#define INVERT_E4_DIR true
 #define INVERT_E5_DIR false
 #define INVERT_E6_DIR false
 #define INVERT_E7_DIR false
@@ -3249,7 +3251,7 @@
 // Usually paired with MKS Robin Nano V2 & V3
 // https://github.com/makerbase-mks/MKS-TFT-Hardware/tree/master/MKS%20TS35
 //
-#define MKS_TS35_V2_0
+// #define MKS_TS35_V2_0
 
 //
 // 320x240, 2.4", FSMC Display From MKS
@@ -3354,7 +3356,7 @@
  */
 //#define TFT_CLASSIC_UI
 // #define TFT_COLOR_UI
-#define TFT_LVGL_UI
+// #define TFT_LVGL_UI
 
 #if ENABLED(TFT_COLOR_UI)
   /**

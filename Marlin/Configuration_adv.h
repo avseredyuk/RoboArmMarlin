@@ -1240,17 +1240,17 @@
  * Enable DISABLE_IDLE_* to shut down axis steppers after an idle period.
  * The default timeout duration can be overridden with M18 and M84. Set to 0 for No Timeout.
  */
-#define DEFAULT_STEPPER_TIMEOUT_SEC 120
-#define DISABLE_IDLE_X
-#define DISABLE_IDLE_Y
-#define DISABLE_IDLE_Z    // Disable if the nozzle could fall onto your printed part!
+#define DEFAULT_STEPPER_TIMEOUT_SEC 0
+//#define DISABLE_IDLE_X
+//#define DISABLE_IDLE_Y
+//#define DISABLE_IDLE_Z    // Disable if the nozzle could fall onto your printed part!
 //#define DISABLE_IDLE_I
 //#define DISABLE_IDLE_J
 //#define DISABLE_IDLE_K
 //#define DISABLE_IDLE_U
 //#define DISABLE_IDLE_V
 //#define DISABLE_IDLE_W
-#define DISABLE_IDLE_E    // Shut down all idle extruders
+//#define DISABLE_IDLE_E    // Shut down all idle extruders
 
 // Default Minimum Feedrates for printing and travel moves
 #define DEFAULT_MINIMUMFEEDRATE       0.0     // (mm/s. °/s for rotational-only moves) Minimum feedrate. Set with M205 S.
@@ -2976,7 +2976,7 @@
   #define INTERPOLATE      false
 
   #if AXIS_IS_TMC_CONFIG(X)
-    #define X_CURRENT       800        // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT       1200        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     64        // 0..256
     #define X_RSENSE          0.11     // Multiplied x1000 for TMC26X
@@ -2996,7 +2996,7 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Y)
-    #define Y_CURRENT       800
+    #define Y_CURRENT       1200
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     64
     #define Y_RSENSE          0.11
@@ -3016,7 +3016,7 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Z)
-    #define Z_CURRENT       800
+    #define Z_CURRENT       1200
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     16
     #define Z_RSENSE          0.11
@@ -3116,7 +3116,7 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(E0)
-    #define E0_CURRENT      800
+    #define E0_CURRENT      1200
     #define E0_MICROSTEPS    16
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1

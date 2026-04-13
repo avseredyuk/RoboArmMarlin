@@ -147,17 +147,17 @@
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-//#define I_DRIVER_TYPE  A4988
-//#define J_DRIVER_TYPE  A4988
-//#define K_DRIVER_TYPE  A4988
-//#define U_DRIVER_TYPE  A4988
+#define I_DRIVER_TYPE  TMC2209
+#define J_DRIVER_TYPE  TMC2209
+#define K_DRIVER_TYPE  TMC2209
+#define U_DRIVER_TYPE  TMC2209
 //#define V_DRIVER_TYPE  A4988
 //#define W_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE TMC2209
-#define E1_DRIVER_TYPE TMC2209
-#define E2_DRIVER_TYPE TMC2209
-#define E3_DRIVER_TYPE TMC2209
-// #define E4_DRIVER_TYPE TMC2209
+//#define E0_DRIVER_TYPE TMC2209
+//#define E1_DRIVER_TYPE TMC2209
+//#define E2_DRIVER_TYPE TMC2209
+//#define E3_DRIVER_TYPE TMC2209
+//#define E4_DRIVER_TYPE TMC2209
 //#define E5_DRIVER_TYPE A4988
 //#define E6_DRIVER_TYPE A4988
 //#define E7_DRIVER_TYPE A4988
@@ -181,15 +181,15 @@
  */
 #ifdef I_DRIVER_TYPE
   #define AXIS4_NAME 'A' // :['A', 'B', 'C', 'U', 'V', 'W']
-  #define AXIS4_ROTATES
+  //#define AXIS4_ROTATES
 #endif
 #ifdef J_DRIVER_TYPE
   #define AXIS5_NAME 'B' // :['B', 'C', 'U', 'V', 'W']
-  #define AXIS5_ROTATES
+  //#define AXIS5_ROTATES
 #endif
 #ifdef K_DRIVER_TYPE
   #define AXIS6_NAME 'C' // :['C', 'U', 'V', 'W']
-  #define AXIS6_ROTATES
+  //#define AXIS6_ROTATES
 #endif
 #ifdef U_DRIVER_TYPE
   #define AXIS7_NAME 'U' // :['U', 'V', 'W']
@@ -208,7 +208,7 @@
 
 // This defines the number of extruders
 // :[0, 1, 2, 3, 4, 5, 6, 7, 8]
-#define EXTRUDERS 4
+#define EXTRUDERS 0
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
@@ -669,7 +669,7 @@
 #define PID_K1     0.95   // Smoothing factor within any PID loop
 
 #if ENABLED(PIDTEMP)
-  #define PID_DEBUG             // Print PID debug data to the serial port. Use 'M303 D' to toggle activation.
+  //#define PID_DEBUG             // Print PID debug data to the serial port. Use 'M303 D' to toggle activation.
   //#define PID_PARAMS_PER_HOTEND // Use separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with G-code: M301 E[extruder number, 0-2]
 
@@ -1719,11 +1719,11 @@
 #define X_ENABLE_ON 0
 #define Y_ENABLE_ON 0
 #define Z_ENABLE_ON 0
-#define E_ENABLE_ON 0 // For all extruders
-//#define I_ENABLE_ON 0
-//#define J_ENABLE_ON 0
-//#define K_ENABLE_ON 0
-//#define U_ENABLE_ON 0
+//#define E_ENABLE_ON 0 // For all extruders
+#define I_ENABLE_ON 0
+#define J_ENABLE_ON 0
+#define K_ENABLE_ON 0
+#define U_ENABLE_ON 0
 //#define V_ENABLE_ON 0
 //#define W_ENABLE_ON 0
 
@@ -1755,9 +1755,9 @@
 // X & Y on same axis, one inverted 
 #define INVERT_Z_DIR false
 #define INVERT_I_DIR false
-#define INVERT_J_DIR true
+#define INVERT_J_DIR false
 #define INVERT_K_DIR true
-#define INVERT_U_DIR false
+#define INVERT_U_DIR true
 //#define INVERT_V_DIR false
 //#define INVERT_W_DIR false
 
@@ -1798,10 +1798,10 @@
 #define X_HOME_DIR -1
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
-//#define I_HOME_DIR -1
-//#define J_HOME_DIR -1
-//#define K_HOME_DIR -1
-//#define U_HOME_DIR -1
+#define I_HOME_DIR 0
+#define J_HOME_DIR 0
+#define K_HOME_DIR 0
+#define U_HOME_DIR 0
 //#define V_HOME_DIR -1
 //#define W_HOME_DIR -1
 
@@ -1823,24 +1823,24 @@
 // @section geometry
 
 // The size of the printable area
-#define X_BED_SIZE 290
-#define Y_BED_SIZE 290
+// #define X_BED_SIZE 160
+// #define Y_BED_SIZE 160
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
-#define X_MIN_POS 0
-#define Y_MIN_POS 0
+#define X_MIN_POS -80
+#define Y_MIN_POS -80
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS Y_BED_SIZE
+#define X_MAX_POS 80
+#define Y_MAX_POS 80
 #define Z_MAX_POS 300
-//#define I_MIN_POS 0
-//#define I_MAX_POS 50
-//#define J_MIN_POS 0
-//#define J_MAX_POS 50
-//#define K_MIN_POS 0
-//#define K_MAX_POS 50
-//#define U_MIN_POS 0
-//#define U_MAX_POS 50
+#define I_MIN_POS -40
+#define I_MAX_POS 40
+#define J_MIN_POS -150
+#define J_MAX_POS 150
+#define K_MIN_POS 0
+#define K_MAX_POS 50
+#define U_MIN_POS -30
+#define U_MAX_POS 30
 //#define V_MIN_POS 0
 //#define V_MAX_POS 50
 //#define W_MIN_POS 0
@@ -2273,7 +2273,7 @@
  * - Allows Z homing only when XY positions are known and trusted.
  * - If stepper drivers sleep, XY homing may be required again before Z homing.
  */
-#define Z_SAFE_HOMING
+// #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT 100  // (mm) X point for Z homing
@@ -2282,7 +2282,7 @@
 #endif
 
 // Homing speeds (linear=mm/min, rotational=°/min)
-#define HOMING_FEEDRATE_MM_M { (2000), (2000), (4*60) }
+#define HOMING_FEEDRATE_MM_M { (2000), (2000), (4*60), (4*60), (4*60), (4*60), (4*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS

@@ -138,7 +138,7 @@
 //
 #define FIL_RUNOUT_PIN               E0_DIAG_PIN  // M4-STOP
 #define FIL_RUNOUT2_PIN              E1_DIAG_PIN  // M5-STOP
-#define FIL_RUNOUT3_PIN              E2_DIAG_PIN  // M6-STOP
+//#define FIL_RUNOUT3_PIN              E2_DIAG_PIN  // M6-STOP
 
 //
 // Steppers
